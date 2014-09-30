@@ -12,7 +12,11 @@ that can be plugged in between your client and server as an **HTTP proxy**.
 Basic Deployment
 ================
 
-::
+Start `redis` first::
+
+    $ redis-server
+
+And then, clone & run `Shinpachi`::
 
     $ git clone https://github.com/l04m33/shinpachi.git
     $ cd shinpachi
@@ -26,4 +30,4 @@ console running.
 TODO
 ====
 
-More doc.
+More docs.
