@@ -1,0 +1,52 @@
+{% extends "base_layout.jinja2" %}
+{% block title %}Shinpachi Console{% endblock %}
+{% block head %}
+    <link rel="stylesheet" href="static/css/hljs-theme-tomorrow.min.css" />
+    <script type="text/javascript" src="static/js/highlight.min.js"></script>
+
+    <script type="text/javascript" src="/static/js/console.js"></script>
+{% endblock head %}
+{% block before_content %}
+    <div id="tool-bar">
+        <ul id="cmd-list">
+            <li id="subscribe-button" title="Subscribe to an endpoint (S)"><i class="fa fa-edit fa-fw"></i></li>
+            <li id="subscription-list-button" title="Subscriptions (L)"><i class="fa fa-bars fa-fw"></i></li>
+            <!-- TODO -->
+            <li id="search-button" title="Search (/)" style="display:none;"><i class="fa fa-search fa-fw"></i></li>
+            <li id="search-input" class="li-input">
+                <input id="search-text" type="text" placeholder="Regular expression" />
+            </li>
+            <li id="clear-log-button" title="Clear logs (C)"><i class="fa fa-trash-o fa-fw"></i></li>
+            <li id="re-connect-button" title="Reconnect to Shinpachi (R)"><i class="fa fa-refresh fa-fw"></i></li>
+            <li id="open-all-button" title="Expand all log details (+)"><i class="fa fa-plus-square fa-fw"></i></li>
+            <li id="close-all-button" title="Collapse all log details (-)"><i class="fa fa-minus-square fa-fw"></i></li>
+            <li id="follow-event-button" title="Follow captured streams (F)"><i class="fa fa-arrow-circle-down fa-fw"></i></li>
+        </ul>
+    </div>
+
+    <div id="subscribe-panel" class="toolbar-panel">
+        <div class="panel-title"><i class="fa fa-times close-button"></i></div>
+        <div class="subscribe-message">
+            <i class="fa fa-times-circle fa-fw"></i><span id="subscribe-message-content"></span>
+        </div>
+        <label for="endpoint1">Endpoint #1</label>
+        <input type="text" id="endpoint1" placeholder="<IP Address>[:<Port>]" />
+        <label for="endpoint2">Endpoint #2 (Optional)</label>
+        <input type="text" id="endpoint2" placeholder="<IP Address>[:<Port>]" />
+
+        <div id="subs-submit-button" class="button full-width">Subscribe</div>
+    </div>
+
+    <div id="subs-list-panel" class="toolbar-panel">
+        <div class="panel-title"><i class="fa fa-times close-button"></i></div>
+    </div>
+{% endblock before_content %}
+{% block content %}
+    <div class="sixteen columns" id='event-list'>
+    </div>
+
+    <div class="sixteen columns" id="bottom-ads">
+    </div>
+{% endblock content %}
+
+{# vim: set ft=html: #}

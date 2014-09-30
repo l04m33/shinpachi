@@ -1,0 +1,3 @@
+[submodule "web_assets/lib/highlight.js"]
+	path = web_assets/lib/highlight.js
+	url = https://github.com/isagalaev/highlight.js.git

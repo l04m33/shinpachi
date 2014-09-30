@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+    <title>{% block title %}Shinpachi Console{% endblock title %}</title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="description" content="Shinpachi is a cool little tool that can help you to debug network protocols and APIs, especially HTTP and REST APIs." />
+    <meta name="author" content="Kay Zheng (l04m33(at)gmail.com)" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="Shinpachi,HTTP,TCP,sniffer,networking,debugger,HTML5" />
+
+    <link rel="stylesheet" href="static/css/skeleton.min.css" />
+    <link rel="stylesheet" href="static/css/shinpachi_layout.css" />
+
+    <link rel="stylesheet" href="static/css/font-awesome.min.css" />
+
+    <link rel="shortcut icon" type="image/png" href="static/img/shinpachi_logo_64.png" />
+
+    <script type="text/javascript" src="/static/js/zepto.min.js"></script>
+    <script type="text/javascript" src="/static/js/common.js"></script>
+
+    {% block head %}
+    {% endblock head %}
+</head>
+
+<body>
+    <div id="top-nav-bar">
+        <div class="title-area">
+            <a href="/"><span class="site-title">Shinpachi</span></a>&nbsp;
+            <span class="site-version">v{{ version }}</span>
+        </div>
+        <div class="nav-area">
+            <a class="nav-item" href="intro">About</a>
+        </div>
+        <div class="login-area">
+            {% if user is none %}
+            <div class="button" id="login-button"><i class="fa fa-sign-in fa-fw"></i><span>Sign In</span></div>
+            {% else %}
+            <div id="user-info">
+                <img src="{{ user.avatar_https }}" />
+                <span>{{ user.name }}</span>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    <div id="login-panel">
+        <div class="login-tooltip">
+            {% if need_auth and user is none %}
+            <div class="login-message">
+                <i class="fa fa-times-circle fa-fw"></i><span>Please sign in.</span>
+            </div>
+            {% endif %}
+            {% if user is none %}
+            <div class="login-label">
+                Sign in with:
+            </div>
+            <form name="login_form" action="/oauth" method="post">
+                <button type="submit" name="github_login" value="github_login" class="full-width"><i class="fa fa-github-alt"></i><span>Github account</span></button>
+                <button type="submit" name="twitter_login" value="twitter_login" class="full-width"><i class="fa fa-twitter"></i><span>Twitter account</span></button>
+                <button type="submit" name="facebook_login" value="facebook_login" class="full-width"><i class="fa fa-facebook-square"></i><span>Facebook account</span></button>
+                <button type="submit" name="google_login" value="google_login" class="full-width"><i class="fa fa-google-plus"></i><span>Google account</span></button>
+                <button type="submit" name="weibo_login" value="weibo_login" class="full-width"><i class="fa fa-weibo"></i><span>Weibo account</span></button>
+            </form>
+            {% else %}
+            <form name="logout_form" action="/oauth_logout" method="post">
+                <button type="submit" name="logout" value="logout" class="full-width"><i class="fa fa-sign-out fa-fw"></i><span>Sign Out</span></button>
+            </form>
+            {% endif %}
+        </div>
+    </div>
+
+    {% block before_content %}
+    {% endblock before_content %}
+
+    <div class="container" style="padding-top: 120px;">
+        {% block content %}
+        {% endblock content %}
+    </div>
+
+    {% block after_content %}
+    {% endblock after_content %}
+
+</body>
+</html>
+
+{# vim: set ft=html: #}

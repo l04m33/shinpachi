@@ -1,0 +1,26 @@
+{
+  "name": "shinpachi_console",
+  "version": "0.1.0",
+  "authors": [
+    "Kay Zheng <l04m33@gmail.com>"
+  ],
+  "description": "Web console for Shinpachi",
+  "moduleType": [
+    "amd"
+  ],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "zepto": "~1.1.4",
+    "font-awesome": "~4.1.0",
+    "skeleton": "*",
+    "animate.css": "~3.2.0",
+    "WOW": "~1.0.1"
+  }
+}

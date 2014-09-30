@@ -1,0 +1,2 @@
+/*! js/shinpachi.js 2014-09-18 */
+!function(){var a=function(){var a=$("#login-panel");$("#login-button").click(function(){a.toggle()}),$("#user-info").click(function(){a.toggle()}),$(".login-message").length>0&&a.show()};$(a)}();

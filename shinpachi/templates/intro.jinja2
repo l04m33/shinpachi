@@ -1,0 +1,400 @@
+{% extends "base_layout.jinja2" %}
+{% block title %}Welcome to Shinpachi{% endblock %}
+{% block head %}
+    <link rel="stylesheet" href="static/css/animate.min.css" />
+    <script type="text/javascript" src="static/js/wow.min.js"></script>
+    <script type="text/javascript">
+        new WOW().init();
+    </script>
+{% endblock head %}
+{% block content %}
+    <div class="sixteen columns">
+        <p>
+        <img src="static/img/console_screenshot.png" class="intro-screenshot" />
+        </p>
+    </div>
+    <div class="sixteen columns intro-text">
+        <p>
+        Shinpachi is a cool little tool that can help you to debug
+        network protocols and APIs, especially HTTP and REST APIs.
+        It's built for the web, and with web technologies.
+        </p>
+        <p>
+        In short, Shinpachi is basically a
+        <a href="https://www.wireshark.org/">Wireshark</a> that can
+        be plugged in between your client and server as a proxy server.
+        </p>
+        <p>
+        To use Shinpachi, all you need is a recent web browser. It's
+        easy to set up, and most operating systems and smart devices
+        are supported.
+        </p>
+        <div class="misc-buttons">
+            <a class="big-button start-button wow bounceInUp" href="/">Start Using It Now</a>
+        </div>
+        <div class="misc-buttons">
+            <a class="big-button usage-button wow bounceInUp" href="#usage">Usage</a>
+            <a class="big-button usage-button wow bounceInUp" href="#faq">F.A.Q.</a>
+        </div>
+    </div>
+    <div class="sixteen columns">
+        <hr class="intro-hr" />
+    </div>
+    <div class="eight columns intro-text wow bounceInUp" data-wow-offset="100">
+        <p>
+        It's Based on the widely accepted HTTP proxy protocol.
+        TCP streams from given devices and software can be captured
+        with ease as long as they support HTTP proxies.
+        </p>
+    </div>
+    <div class="eight columns wow bounceInUp" data-wow-offset="100">
+        <img src="static/img/proxied_access.svg" class="intro-img" alt="Proxied Access" />
+    </div>
+    <div class="sixteen columns">
+        <hr class="intro-hr" />
+    </div>
+    <div class="eight columns wow bounceInUp" data-wow-offset="100">
+        <img src="static/img/html5.svg" class="intro-img" alt="HTML5 Console" />
+    </div>
+    <div class="eight columns intro-text wow bounceInUp" data-wow-offset="100">
+        <p>
+        Shinpachi provides a powerful HTML5 console, which supports
+        image previews and syntax highlighting, helping you to
+        discover every glitch when debugging with it.
+        </p>
+    </div>
+    <div class="sixteen columns">
+        <hr class="intro-hr" />
+    </div>
+    <div class="eight columns intro-text wow bounceInUp" data-wow-offset="100">
+        <p>
+        Capturing and control operations are fully separated. You
+        can inspect the captured data from anywhere with Internet
+        access, thus supporting cooperative debugging.
+        </p>
+    </div>
+    <div class="eight columns wow bounceInUp" data-wow-offset="100">
+        <img src="static/img/network.svg" class="intro-img" alt="Cooperating With Shinpachi" />
+    </div>
+    <div class="sixteen columns">
+        <hr class="intro-hr" />
+    </div>
+    <div class="sixteen columns">
+        <h1 class="intro-title" id="usage">Usage</h1>
+    </div>
+    <div class="sixteen columns">
+        <ol class="usage-steps">
+            <li>
+                <p>
+                To use Shinpachi's console, you need to sign in first.
+                This requirement for signing in is for preventing
+                malicious use of Shinpachi's proxy server, but no
+                personal account data will be stored in our server.
+                </p>
+            </li>
+            <li>
+                <p>
+                In the console, subscribe to the endpoint(s) you want to
+                listen to.
+                </p>
+                <p>
+                    <img src="static/img/usage-subscribe.png" alt="Subscription Panel" />
+                </p>
+                <p>
+                The subscriptions work in two ways. If you subscribed to
+                only one endpoint, all streams connected to that endpoint
+                would be captured, no matter what the other end is. And
+                if you subscribed to two endpoints, only streams between
+                those endpoints would be captured.
+                </p>
+            </li>
+            <li>
+                <p>
+                Point your client's HTTP proxy to the address and port
+                presented by the console.
+                </p>
+            </li>
+            <li>
+                <p>
+                Make requests in your client as usual. Now you can examine
+                the communications in Shinpachi's console.
+                </p>
+                <p>
+                    <img src="static/img/usage-console.png" alt="Captured Data" />
+                </p>
+                <p class="note">
+                Note that, to allow your client to make requests through
+                Shinpachi, you must make a subscription to your client's
+                endpoint first.
+                </p>
+            </li>
+        </ol>
+    </div>
+    <div class="sixteen columns">
+        <hr class="intro-hr" />
+    </div>
+    <div class="sixteen columns">
+        <h1 class="intro-title" id="faq">F.A.Q.</h1>
+    </div>
+    <div class="sixteen columns">
+        <ol class="faq-list">
+            <li>
+                <p>
+                Q: The HTTP proxy server returned code 403, why?
+                </p>
+                <p>
+                A: Only the IPs subscribed to in Shinpachi's console will have access to the proxy server.
+                If you want a device to use the proxy server, subscribe to the device's IP first.
+                </p>
+            </li>
+            <li>
+                <p>
+                Q: Why can't I receive any captured data in the console?
+                </p>
+                <p>
+                A: Despite of network problems and natural disasters like an erupting volcano,
+                here's a checklist.
+                </p>
+                <ul class="checklist">
+                    <li>
+                        <p>
+                        Make sure you subscribed to the public IP of your device/browser that you wanted
+                        to listen to. Private IPs like 192.168.*.* and 10.*.*.* won't work. You can use
+                        <a href="http://ifconfig.me">ifconfig.me</a> to determine your public IP.
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                        If you subscribed to two endpoints in one subscription, you can only see the activities
+                        between those two endpoints. Make sure those two endpoints are the correct ones. You can
+                        inspect the subscriptions by clicking the "Subscriptions" button in the console, or by
+                        pressing the "L" key.
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                        Shinpachi can only handle TCP streams, so streams of other protocols, such as UDP, won't
+                        show up in the console.
+                        </p>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <p>
+                Q: Does Shinpachi support IPv6?
+                </p>
+                <p>
+                A: Yes. You can subscribe to IPv6 addresses, as long as your network supports IPv6 too.
+                </p>
+            </li>
+            <li>
+                <p>
+                Q: There are some replies in TCP streams that are missing or incomplete, why's that?
+                </p>
+                <p>
+                A: To maximize performance, Shinpachi uses an asynchronous trigger mechanism to handle
+                subscriptions. If you subscribed to only one endpoint in a subscription, the proxy server
+                will learn about other endpoints only when the original endpoint talks to the others.
+                Some data may get dropped during the learning process, but all data will be captured once
+                all endpoints are learnt about. On the other hand, if you subscribed to two endpoints in
+                one subscription, the server knows about all the endpoints, so no data will get dropped.
+                </p>
+            </li>
+            <li>
+                <p>
+                Q: I have tons of other questions.
+                </p>
+                <p>
+                A: Please, <a href="mailto:l04m33@gmail.com">drop me a line</a>, or leave a comment
+                in the <a href="#disqus_thread">comments section</a> at the bottom of this page.
+                You can also do these even if you have no real questions. I don't mind :).
+                </p>
+            </li>
+        </ol>
+    </div>
+    <div class="sixteen columns">
+        <hr class="intro-hr" />
+    </div>
+
+    <div class="sixteen columns">
+        <div class="misc-buttons">
+            <a id="privacy-policy-link" class="hidden-content-link">Privacy Policy</a>
+        </div>
+        <h1 class="intro-title" id="privacy-policy">Privacy Policy</h1>
+    </div>
+    <div class="sixteen columns" id="privacy-policy-list">
+        <h2 class="policy-title">
+        What information do we collect?
+        </h2>
+        <p>
+        We collect information from you when you sign in to this site. The information collected includes,
+        but not limited to, your name(s) and your avatar image(s) associated with your online account(s).
+        </p>
+        <p>
+        We will not collect more sensitive information such as E-mail addresses, phone numbers, or passwords
+        of your online accounts.
+        </p>
+        <h2 class="policy-title">
+        What do we use your information for?
+        </h2>
+        <p>
+        Your personal information will be used to authorize your access to this site, and we will not
+        store any of these information in our server(s).
+        </p>
+        <p>
+        We may also utillize third-party web site analytic and advertising services, which may make
+        use of your history of visiting this or other web sites.
+        </p>
+        <h2 class="policy-title">
+        How do we protect your information?
+        </h2>
+        <p>
+        We always use encrypted secure connections to transfer your personal information. And we do not
+        store any of your information in our server(s), therefore a security breach of our server's
+        storage mechanism will not expose your personal information.
+        </p>
+        <h2 class="policy-title">
+        Do we use cookies?
+        </h2>
+        <p>
+        Yes we do use cookies. Cookies may be used for supporting the sign-in mechanism, analyzing web-site 
+        usage, and displaying relevant advertisements.
+        </p>
+        <h2 class="policy-title">
+        Do we disclose any information to outside parties?
+        </h2>
+        <p>
+        We may provide tracking information to third-party analytic and advertising services, otherwise, no
+        personal information will be disclosed to outside parties unless enforced by laws.
+        </p>
+        <h2 class="policy-title">
+        Third Party Links
+        </h2>
+        <p>
+        Occasionally, at our discretion, we may include or offer third-party products or services on this site.
+        These third-party sites have separate and independent privacy policies. We therefore have no responsibility
+        or liability for the content and activities of these linked sites. Nonetheless, we seek to protect the
+        integrity of our site, and any feedback about these sites are welcome.
+        </p>
+        <h2 class="policy-title">
+        Your Consent
+        </h2>
+        <p>
+        By using this site, you consent to our privacy policy.
+        </p>
+        <h2 class="policy-title">
+        Changes To Our Privacy Policy
+        </h2>
+        <p>
+        All changes to our privacy policy will be posted on this page.
+        </p>
+        <p>
+        This policy was last modified on Sep. 15th, 2014.
+        </p>
+    </div>
+    <div class="sixteen columns">
+        <hr class="intro-hr" />
+    </div>
+
+    <div class="sixteen columns">
+        <div class="misc-buttons">
+            <a id="terms-of-service-link" class="hidden-content-link">Terms of Service</a>
+        </div>
+        <h1 class="intro-title" id="terms-of-service">Terms of Service</h1>
+    </div>
+    <div class="sixteen columns" id="terms-of-service-list">
+        <p>
+            Please read these terms of service carefully. This agreement documents the
+            legally binding terms and conditions attached to the use of this site at shinpa.ch.
+            By using or accessing this site in any way, you are agreeing to be bound by these terms of service.
+        </p>
+        <h2 class="policy-title">
+            Intellectual Property
+        </h2>
+        <p>
+            This site and all of its original content are the sole property of its owner, as such,
+            fully protected by the appropriate international copyright and other intellectual property rights laws.
+        </p>
+        <h2 class="policy-title">
+            Termination
+        </h2>
+        <p>
+            We reserve the right to terminate your access to this site, without any advance notice.
+        </p>
+        <h2 class="policy-title">
+            Usage Restrictions
+        </h2>
+        <ol>
+            <li>
+                You can only use this site for diagnosing purposes, such as debugging APIs, servers
+                and/or clients.
+            </li>
+            <li>
+                You may NOT use the proxy server provided by this site to hide your identity,
+                or to make anonymous access to other network services.
+            </li>
+            <li>
+                You may NOT use the proxy server provided by this site to transfer illegal content.
+            </li>
+        </ol>
+        <h2 class="policy-title">
+            Links to Other Websites
+        </h2>
+        <p>
+            Our site does contain a number of links to other websites and online resources that are not owned or controlled by us.
+            We have no control over, and therefore cannot assume responsibility for, the content or general practices
+            of any of these third party sites and/or services. Therefore, we strongly advise you to read the entire terms and
+            conditions and privacy policy of any site that you visit as a result of following a link that is posted on our site.
+        </p>
+        <h2 class="policy-title">
+            Changes to This Agreement
+        </h2>
+        <p>
+            We reserves the right to modify these terms of service at any time.
+            We do so by posting and drawing attention to the updated terms on this site.
+            Your decision to continue to visit and make use of this site after such changes
+            have been made constitutes your formal acceptance of the new terms of service.
+        </p>
+        <p>
+            Therefore, we ask that you check and review this agreement for such changes on an occasional basis.
+            Should you not agree to any provision of this agreement or any changes we make to this agreement,
+            we ask and advise that you do not use or continue to access this site immediately.
+        </p>
+        <p>
+            This agreement was last modified on Sep. 15th, 2014.
+        </p>
+    </div>
+    <div class="sixteen columns">
+        <hr class="intro-hr" />
+    </div>
+
+    <div class="sixteen columns footer">
+        <p>Powered by the magnificent <a href="https://www.python.org/">Python</a> and <a href="https://github.com/KeepSafe/aiohttp">aiohttp</a></p>
+        <p>© 2014 <a href="mailto:l04m33@gmail.com">Kay Z.</a></p>
+    </div>
+
+    <script type="text/javascript">
+        $('#privacy-policy-link').click(function () {
+            $('#privacy-policy').show();
+            $('#privacy-policy-list').show();
+            $(this).hide();
+        });
+        $('#privacy-policy').click(function () {
+            $(this).hide();
+            $('#privacy-policy-list').hide();
+            $('#privacy-policy-link').show();
+        });
+        $('#terms-of-service-link').click(function () {
+            $('#terms-of-service').show();
+            $('#terms-of-service-list').show();
+            $(this).hide();
+        });
+        $('#terms-of-service').click(function () {
+            $(this).hide();
+            $('#terms-of-service-list').hide();
+            $('#terms-of-service-link').show();
+        });
+    </script>
+{% endblock content %}
+
+{# vim: set ft=html: #}

@@ -1,0 +1,4 @@
+function FindProxyForURL(url, host) {
+    return "{% for addr in http_addr_infos %} PROXY {{ addr[0] }}:{{ addr[1] }}; {% endfor %}";
+}
+{# vim: set ft=javascript: #}
